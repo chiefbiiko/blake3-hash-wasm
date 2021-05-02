@@ -1,0 +1,33 @@
+{
+  "name": "blake3-react",
+  "version": "0.1.0",
+  "description": "BLAKE3 📦 4 React",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "fmt": "npx prettier --no-semi --arrow-parens avoid --trailing-comma none --print-width 80 --write './*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuggetdigital/blake3-react.git"
+  },
+  "keywords": [
+    "BLAKE3",
+    "React"
+  ],
+  "author": "Noah Anabiik Schwarz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nuggetdigital/blake3-react/issues"
+  },
+  "homepage": "https://github.com/nuggetdigital/blake3-react#readme",
+  "devDependencies": {
+    "@babel/preset-env": "7.14.0",
+    "@babel/preset-react": "7.13.13",
+    "@testing-library/react": "11.2.6",
+    "@testing-library/react-hooks": "5.1.2",
+    "jest": "26.6.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  }
+}
