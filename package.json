@@ -1,19 +1,33 @@
 {
   "name": "blake3-wasm-sync",
   "version": "0.1.0",
-  "files": [
-    "index.js",
-    "index.d.ts"
-  ],
-  "module": "index.js",
-  "types": "index.d.ts",
-  "sideEffects": "false",
-  "type": "module",
   "scripts": {
     "test": "node ./test.js",
     "fmt": "npx prettier --no-semi --arrow-parens avoid --trailing-comma none --print-width 80 --write './*.js'"
   },
   "devDependencies": {
     "tape": "5.2.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuggetdigital/blake3-wasm-sync.git"
+  },
+  "keywords": [
+    "BLAKE3",
+    "WebAssembly"
+  ],
+  "author": "Noah Anabiik Schwarz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nuggetdigital/blake3-wasm-sync/issues"
+  },
+  "homepage": "https://github.com/nuggetdigital/blake3-wasm-sync#readme",
+  "type": "module",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts"
+  ],
+  "sideEffects": "false"
 }
