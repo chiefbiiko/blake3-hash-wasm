@@ -1,58 +1,38 @@
-/* tslint:disable */
-/* eslint-disable */
-/**
-* @param {Uint8Array} data 
-* @param {Uint8Array} out 
-*/
+# blake3-wasm-sync
+
+[![ci](https://github.com/nuggetdigital/blake3-wasm-sync/workflows/ci/badge.svg)](https://github.com/nuggetdigital/blake3-wasm-sync/actions/workflows/ci.yml)
+
+[BLAKE3](https://github.com/BLAKE3-team/BLAKE3)'s original wasm impl patchworkd as a *sync* loaded (4 ease of use) npm 📦
+
+Additionally, `blake3-wasm-sync` adds a `hash256hex` convenience func
+
+## API
+
+``` ts
 export function hash256hex(data: Uint8Array): string;
-/**
-* @param {Uint8Array} data 
-* @param {Uint8Array} out 
-*/
+
 export function hash(data: Uint8Array, out: Uint8Array): void;
-/**
-* @returns {Blake3Hash} 
-*/
+
 export function create_hasher(): Blake3Hash;
-/**
-* @param {Uint8Array} key_slice 
-* @returns {Blake3Hash} 
-*/
+
 export function create_keyed(key_slice: Uint8Array): Blake3Hash;
-/**
-* @param {string} context 
-* @returns {Blake3Hash} 
-*/
+
 export function create_derive(context: string): Blake3Hash;
-/**
-*/
+
 export class Blake3Hash {
   free(): void;
-/**
-* @returns {HashReader} 
-*/
   reader(): HashReader;
-/**
-* @param {Uint8Array} input_bytes 
-*/
   update(input_bytes: Uint8Array): void;
-/**
-* @param {Uint8Array} out 
-*/
   digest(out: Uint8Array): void;
 }
-/**
-*/
+
 export class HashReader {
   free(): void;
-/**
-* @param {Uint8Array} bytes 
-*/
   fill(bytes: Uint8Array): void;
-/**
-* @param {BigInt} position 
-*/
   set_position(position: BigInt): void;
-}
+}  
+```
 
-        
+## License
+
+[MIT](./LICENSE)
