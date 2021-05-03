@@ -15,4 +15,6 @@ jobs:
       - uses: actions/setup-node@v2.1.5
         with:
           node-version: "16"
-      - run: npm t
+      - run: |
+          npm i
+          npm t
