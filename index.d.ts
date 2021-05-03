@@ -4,6 +4,11 @@
 * @param {Uint8Array} data 
 * @param {Uint8Array} out 
 */
+export function hash256hex(data: Uint8Array): string;
+/**
+* @param {Uint8Array} data 
+* @param {Uint8Array} out 
+*/
 export function hash(data: Uint8Array, out: Uint8Array): void;
 /**
 * @returns {Blake3Hash} 

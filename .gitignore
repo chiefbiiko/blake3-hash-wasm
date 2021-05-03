@@ -1,1 +1,3 @@
 node_modules/
+# this is a zero dep pkg so no need 4 a pkg lock
+package-lock.json
