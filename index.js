@@ -10,7 +10,7 @@ function toBuf(base64) {
 let wasm
 
 export async function init() {
-  if (typeof document === "object") {
+  if (!wasm && typeof document === "object") {
     res = await instantiateStreaming(
       fetch(
         URL.createObjectURL(new Blob([buffer], { type: "application/wasm" }))
