@@ -1,3 +1,4 @@
-node_modules/
-# this is a zero dep pkg so no need 4 a pkg lock
+# this is a zero prod dep pkg so no need 4 a pkg lock
 package-lock.json
+node_modules/
+**/target

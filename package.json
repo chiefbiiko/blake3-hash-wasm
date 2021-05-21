@@ -1,16 +1,17 @@
 {
-  "name": "blake3-wasm-sync",
+  "name": "blake3-hash-wasm",
   "version": "0.1.0",
   "scripts": {
     "test": "node ./test.js",
-    "fmt": "npx prettier --no-semi --arrow-parens avoid --trailing-comma none --print-width 80 --write './*.js'"
+    "fmt": "npx prettier --no-semi --arrow-parens avoid --trailing-comma none --print-width 80 --write './*.js'",
+    "pkg": "./rust/pkg.sh rust"
   },
   "devDependencies": {
     "tape": "5.2.2"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nuggetdigital/blake3-wasm-sync.git"
+    "url": "git+https://github.com/nuggetdigital/blake3-hash-wasm.git"
   },
   "keywords": [
     "BLAKE3",
@@ -19,9 +20,9 @@
   "author": "Noah Anabiik Schwarz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nuggetdigital/blake3-wasm-sync/issues"
+    "url": "https://github.com/nuggetdigital/blake3-hash-wasm/issues"
   },
-  "homepage": "https://github.com/nuggetdigital/blake3-wasm-sync#readme",
+  "homepage": "https://github.com/nuggetdigital/blake3-hash-wasm#readme",
   "type": "module",
   "module": "index.js",
   "types": "index.d.ts",
@@ -29,5 +30,5 @@
     "index.js",
     "index.d.ts"
   ],
-  "sideEffects": "false"
+  "sideEffects": false
 }
