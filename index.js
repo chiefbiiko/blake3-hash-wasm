@@ -7,16 +7,26 @@ function toBuf(base64) {
   else return Buffer.from(base64, "base64")
 }
 
-const wasm = new WebAssembly.Instance(
-  new WebAssembly.Module(toBuf(WASM_BASE64)),
-  {
-    wbg: {
-      __wbindgen_throw(arg0, arg1) {
-        throw new Error(getStringFromWasm0(arg0, arg1))
-      }
+let wasm
+
+export async function init() {
+  if (typeof document === "object") {
+    wasm = await instantiateStreaming(fetch(URL.createObjectURL(new Blob([buffer], { type: "application/wasm" }))), {});
     }
-  }
-).exports
+}
+
+if (typeof document === "undefined") {
+    wasm = new WebAssembly.Instance(
+      new WebAssembly.Module(toBuf(WASM_BASE64)),
+      {
+        wbg: {
+          __wbindgen_throw(arg0, arg1) {
+            throw new Error(getStringFromWasm0(arg0, arg1))
+          }
+        }
+      }
+    ).exports
+}
 
 export function hash256hex(msg) {
   const out = new Uint8Array(32)

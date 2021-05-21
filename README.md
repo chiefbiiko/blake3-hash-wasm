@@ -4,11 +4,21 @@
 
 [BLAKE3](https://github.com/BLAKE3-team/BLAKE3)'s original wasm impl patchworkd as a *sync* loaded (4 ease of use) npm 📦
 
-Additionally, `blake3-wasm-sync` adds a `hash256hex` convenience func
+Due to this browser error, the `-sync` part actually just works in `node.js`:
+
+```
+Uncaught RangeError: WebAssembly.Compile is disallowed on the main thread, if the buffer size is larger than 4KB. Use WebAssembly.compile, or compile on a worker thread.
+```
+
+In the **browser** you need to `await` the `export`ed `async function init()` before using any other module exports.
+
+`blake3-wasm-sync` adds a `hash256hex` convenience func ontop of the original API
 
 ## API
 
 ``` ts
+export async function init(): Promise<void>;
+
 export function hash256hex(data: Uint8Array): string;
 
 export function hash(data: Uint8Array, out: Uint8Array): void;
