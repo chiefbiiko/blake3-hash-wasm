@@ -11,28 +11,29 @@ let wasm
 
 export async function init() {
   if (typeof document === "object") {
-    wasm = await instantiateStreaming(fetch(URL.createObjectURL(new Blob([buffer], { type: "application/wasm" }))), {});
-    }
+    res = await instantiateStreaming(
+      fetch(
+        URL.createObjectURL(new Blob([buffer], { type: "application/wasm" }))
+      ),
+      {}
+    )
+    wasm = res.instance.exports
+  }
 }
 
 if (typeof document === "undefined") {
-    wasm = new WebAssembly.Instance(
-      new WebAssembly.Module(toBuf(WASM_BASE64)),
-      {
-        wbg: {
-          __wbindgen_throw(arg0, arg1) {
-            throw new Error(getStringFromWasm0(arg0, arg1))
-          }
-        }
+  wasm = new WebAssembly.Instance(new WebAssembly.Module(toBuf(WASM_BASE64)), {
+    wbg: {
+      __wbindgen_throw(arg0, arg1) {
+        throw new Error(getStringFromWasm0(arg0, arg1))
       }
-    ).exports
+    }
+  }).exports
 }
 
 export function hash256hex(msg) {
   const out = new Uint8Array(32)
-
   hash(msg, out)
-
   return out.reduce(
     (hex, byte) => hex + (byte < 16 ? "0" : "") + byte.toString(16),
     ""
