@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: test blake3-wasm-sync
+    name: test blake3-hash-wasm
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2.3.4
@@ -16,5 +16,5 @@ jobs:
         with:
           node-version: "16"
       - run: |
-          npm ci
+          npm i
           npm t
