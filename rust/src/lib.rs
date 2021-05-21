@@ -1,5 +1,5 @@
 use blake3::Hasher;
-use wasm_bindgen::prelude::*;
+use wasm_bindgen::prelude::wasm_bindgen;
 
 #[wasm_bindgen]
 pub fn hash(data: &[u8], out: &mut [u8]) {

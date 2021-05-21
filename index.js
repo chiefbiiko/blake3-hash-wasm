@@ -8,16 +8,29 @@ function toBuf(base64) {
   }
 }
 
-const wasm = new WebAssembly.Instance(
-  new WebAssembly.Module(toBuf(WASM_BASE64)),
-  {
+let wasm
+
+export async function init() {
+  if (!wasm && typeof document === 'object') {
+    res = await Webassembly.instantiateStreaming(
+      fetch(
+        URL.createObjectURL(new Blob([toBuf(WASM_BASE64)], { type: 'application/wasm' }))
+      ),
+      {}
+    )
+    wasm = res.instance.exports
+  }
+}
+
+if (typeof document === 'undefined') {
+  wasm = new WebAssembly.Instance(new WebAssembly.Module(toBuf(WASM_BASE64)), {
     wbg: {
       __wbindgen_throw(arg0, arg1) {
         throw new Error(getStringFromWasm0(arg0, arg1))
       }
     }
-  }
-).exports
+  }).exports
+}
 
 let cachegetUint8Memory0 = null
 function getUint8Memory0() {

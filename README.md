@@ -6,7 +6,10 @@
 
 ## API
 
+In the browser you need to `await init()` before using any other module exports.
+
 ``` ts
+export async function init(): Promise<void>;
 export function hash256hex(msg: Uint8Array): string;
 export function hash(msg: Uint8Array, out: Uint8Array): void;
 ```
