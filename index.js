@@ -12,7 +12,7 @@ let wasm
 
 export async function init() {
   if (!wasm && typeof document === 'object') {
-    res = await Webassembly.instantiateStreaming(
+    const res = await instantiateStreaming(
       fetch(
         URL.createObjectURL(new Blob([toBuf(WASM_BASE64)], { type: 'application/wasm' }))
       ),
@@ -22,7 +22,7 @@ export async function init() {
   }
 }
 
-if (typeof document === 'undefined') {
+if (!wasm && typeof document === 'undefined') {
   wasm = new WebAssembly.Instance(new WebAssembly.Module(toBuf(WASM_BASE64)), {
     wbg: {
       __wbindgen_throw(arg0, arg1) {
