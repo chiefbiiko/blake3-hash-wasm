@@ -24,7 +24,7 @@ let wasm
 
 export async function init() {
   if (!wasm && typeof document === 'object') {
-    const res = await instantiateStreaming(
+    const res = await WebAssembly.instantiateStreaming(
       fetch(
         URL.createObjectURL(new Blob([toBuf(WASM_BASE64)], { type: 'application/wasm' }))
       ),
