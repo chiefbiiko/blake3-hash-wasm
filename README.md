@@ -2,7 +2,7 @@
 
 [![ci](https://github.com/nuggetdigital/blake3-hash-wasm/workflows/ci/badge.svg)](https://github.com/nuggetdigital/blake3-hash-wasm/actions/workflows/ci.yml)
 
-[BLAKE3](https://github.com/BLAKE3-team/BLAKE3)'s `hash` func patchworkd as a mini *sync* loaded wasm npm 📦
+[BLAKE3](https://github.com/BLAKE3-team/BLAKE3)'s `hash` func patchworkd as a mini wasm npm 📦
 
 ## API
 
