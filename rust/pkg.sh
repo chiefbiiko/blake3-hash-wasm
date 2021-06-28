@@ -90,7 +90,7 @@ export function hash256hex(msg) {
 echo -e "/* tslint:disable */
 /* eslint-disable */
 
-export async function init(): Promise<void>;
+export function init(): Promise<void>;
 export function hash256hex(msg: Uint8Array): string;
 export function hash(msg: Uint8Array, out: Uint8Array): void;" \
 > $wd/../index.d.ts
