@@ -1,6 +1,6 @@
 {
   "name": "blake3-hash-wasm",
-  "version": "0.1.0",
+  "version": "0.3.4",
   "scripts": {
     "test": "node ./test.js",
     "pkg": "./rust/pkg.sh rust"
@@ -14,7 +14,8 @@
   },
   "keywords": [
     "BLAKE3",
-    "WebAssembly"
+    "WebAssembly",
+    "Hash"
   ],
   "author": "Noah Anabiik Schwarz",
   "license": "MIT",
@@ -22,6 +23,7 @@
     "url": "https://github.com/nuggetdigital/blake3-hash-wasm/issues"
   },
   "homepage": "https://github.com/nuggetdigital/blake3-hash-wasm#readme",
+  "main": "index.js",
   "type": "module",
   "module": "index.js",
   "types": "index.d.ts",
