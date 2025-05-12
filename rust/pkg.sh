@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 wd="${1:-$(pwd)}"
 
@@ -8,7 +8,7 @@ cp $wd/pkg/blake3_hash_wasm_bg.wasm.d.ts $wd/../index.wasm.d.ts
 
 cp $wd/pkg/blake3_hash_wasm_bg.wasm $wd/../index.wasm
 
-wasm_blob=$(base64 $wd/../index.wasm | tr -d ' \r\n\t')
+wasm_blob=$(base64 -i $wd/../index.wasm | tr -d ' \r\n\t')
 
 echo -e "const WASM_BASE64 = '$wasm_blob'
 
@@ -20,29 +20,13 @@ function toBuf(base64) {
   }
 }
 
-let wasm
-
-export async function init() {
-  if (!wasm && typeof document === 'object') {
-    const res = await WebAssembly.instantiateStreaming(
-      fetch(
-        URL.createObjectURL(new Blob([toBuf(WASM_BASE64)], { type: 'application/wasm' }))
-      ),
-      {}
-    )
-    wasm = res.instance.exports
-  }
-}
-
-if (!wasm && typeof document === 'undefined') {
-  wasm = new WebAssembly.Instance(new WebAssembly.Module(toBuf(WASM_BASE64)), {
-    wbg: {
-      __wbindgen_throw(arg0, arg1) {
-        throw new Error(getStringFromWasm0(arg0, arg1))
-      }
+let wasm = new WebAssembly.Instance(new WebAssembly.Module(toBuf(WASM_BASE64)), {
+  wbg: {
+    __wbindgen_throw(arg0, arg1) {
+      throw new Error(getStringFromWasm0(arg0, arg1))
     }
-  }).exports
-}
+  }
+}).exports
 
 let cachegetUint8Memory0 = null
 function getUint8Memory0() {
@@ -90,7 +74,6 @@ export function hash256hex(msg) {
 echo -e "/* tslint:disable */
 /* eslint-disable */
 
-export function init(): Promise<void>;
 export function hash256hex(msg: Uint8Array): string;
 export function hash(msg: Uint8Array, out: Uint8Array): void;" \
 > $wd/../index.d.ts
@@ -103,10 +86,7 @@ echo -e "# blake3-hash-wasm
 
 ## API
 
-In the browser you need to \`await init()\` before using any other module exports.
-
 \`\`\` ts
-export async function init(): Promise<void>;
 export function hash256hex(msg: Uint8Array): string;
 export function hash(msg: Uint8Array, out: Uint8Array): void;
 \`\`\`
